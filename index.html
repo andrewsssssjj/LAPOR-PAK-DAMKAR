@@ -3,104 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Form Kirim ke WhatsApp</title>
+  <title>Form LAPORAN</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7; /* Warna latar belakang halaman */
       padding: 20px;
     }
 
     .container {
-      background: #ffffff;
       max-width: 500px;
       margin: auto;
+      background-color: #FF4500; /* Warna kotak form diubah jadi orangered */
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      color: white; /* Supaya teks tetap terlihat di atas warna gelap */
     }
 
     h2 {
       text-align: center;
-      color: maroon;
       margin-bottom: 25px;
     }
 
     label {
       display: block;
       margin-top: 15px;
-      font-weight: bold;
     }
 
-    input[type="text"], textarea {
+    input, textarea {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border-radius: 5px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
+      border-radius: 5px;
     }
 
     button {
       margin-top: 20px;
       width: 100%;
       padding: 12px;
-      background-color: maroon;
+      background-color: #25D366;
       color: white;
-      font-size: 16px;
       border: none;
       border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #990000;
+      background-color: #1ebe5d;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>ADUAN ULAR</h2>
-    <form id="waForm">
-      <label for="nama">Nama:</label>
-      <input type="text" id="nama" required>
+<div class="container">
+  <h2>FORM LAPOR PAK DAMKAR</h2>
+  <form id="keluhanForm">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" required>
 
-      <label for="alamat">Alamat:</label>
-      <textarea id="alamat" rows="3" required></textarea>
+    <label for="alamat">Alamat:</label>
+    <input type="text" id="alamat" required>
 
-      <label for="nohp">No HP:</label>
-      <input type="text" id="nohp" required>
+    <label for="nohp">No HP:</label>
+    <input type="tel" id="nohp" required>
 
-      <label for="keluhan">Keluhan</label>
-     <textarea id="alamat" rows="3" required></textarea>
+    <label for="keluhan">Keluhan:</label>
+    <textarea id="keluhan" rows="4" required></textarea>
 
-      <button type="submit">Kirim ke WhatsApp</button>
-    </form>
-  </div>
+    <button type="submit">Kirim ke WhatsApp</button>
+  </form>
+</div>
 
-  <script>
-    document.getElementById('waForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+<script>
+  document.getElementById('keluhanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      // Ambil data input
-      const nama = document.getElementById('nama').value;
-      const alamat = document.getElementById('alamat').value;
-      const nohp = document.getElementById('nohp').value;
+    const nama = document.getElementById('nama').value.trim();
+    const alamat = document.getElementById('alamat').value.trim();
+    const nohp = document.getElementById('nohp').value.trim();
+    const keluhan = document.getElementById('keluhan').value.trim();
 
-      // Nomor WhatsApp tujuan (ganti dengan nomor kamu)
-      const nomorWA = '62888225343353'; // Format: 62 + nomor tanpa 0
+    const message = `*LAPOR PAK DAMKAR*\n\nNama: ${nama}\nAlamat: ${alamat}\nNo HP: ${nohp}\nKeluhan: ${keluhan}`;
 
-      // Format pesan
-      const pesan = `*JUDUL FORM*\n\nNama: ${nama}\nAlamat: ${alamat}\nNo HP: ${nohp}`;
+    const whatsappNumber = "6288225343353"; // Ganti dengan nomor kamu
 
-      // Encode pesan dan buat link WhatsApp
-      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-      // Buka WhatsApp
-      window.open(url, '_blank');
-    });
-  </script>
+    window.open(url, '_blank');
+  });
+</script>
 
 </body>
 </html>
